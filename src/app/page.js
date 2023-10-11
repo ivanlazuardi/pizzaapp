@@ -1,91 +1,390 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+import Banner from "./components/Banner"
+import Pizza from "./components/Pizza"
 
-const inter = Inter({ subsets: ['latin'] })
+const pizzas = [
+  {
+    id: 1,
+    name: "capricciosa",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia recusandae dolorum enim eveniet. Mollitia laudantium, sunt blanditiis ratione quam delectus.",
+    image: "/capricciosa.webp",
+    priceSm: 9.99,
+    priceMd: 10.99,
+    priceLg: 11.99,
+    toppings: [
+      {
+        image: "/cherry.png",
+        name: "cherry tomatoes",
+        price: 2,
+      },
+      {
+        image: "/corn.png",
+        name: "corn",
+        price: 2,
+      },
+      {
+        image: "/fresh-tomatoes.png",
+        name: "fresh tomatoes",
+        price: 2,
+      },
+      {
+        image: "/jalapeno.png",
+        name: "jalapeno",
+        price: 2,
+      },
+      {
+        image: "/parmesan.png",
+        name: "parmesan",
+        price: 2,
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "cheesy",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia recusandae dolorum enim eveniet. Mollitia laudantium, sunt blanditiis ratione quam delectus.",
+    image: "/cheesy.webp",
+    priceSm: 10.99,
+    priceMd: 11.99,
+    priceLg: 12.99,
+    toppings: [
+      {
+        image: "/cherry.png",
+        name: "cherry tomatoes",
+        price: 2,
+      },
+      {
+        image: "/corn.png",
+        name: "corn",
+        price: 2,
+      },
+      {
+        image: "/fresh-tomatoes.png",
+        name: "fresh tomatoes",
+        price: 2,
+      },
+      {
+        image: "/jalapeno.png",
+        name: "jalapeno",
+        price: 2,
+      },
+      {
+        image: "/parmesan.png",
+        name: "parmesan",
+        price: 2,
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "hawaii",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia recusandae dolorum enim eveniet. Mollitia laudantium, sunt blanditiis ratione quam delectus.",
+    image: "/hawaii.webp",
+    priceSm: 10.99,
+    priceMd: 11.99,
+    priceLg: 12.99,
+    toppings: [
+      {
+        image: "/cherry.png",
+        name: "cherry tomatoes",
+        price: 2,
+      },
+      {
+        image: "/corn.png",
+        name: "corn",
+        price: 2,
+      },
+      {
+        image: "/fresh-tomatoes.png",
+        name: "fresh tomatoes",
+        price: 2,
+      },
+      {
+        image: "/jalapeno.png",
+        name: "jalapeno",
+        price: 2,
+      },
+      {
+        image: "/parmesan.png",
+        name: "parmesan",
+        price: 2,
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: "italian",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia recusandae dolorum enim eveniet. Mollitia laudantium, sunt blanditiis ratione quam delectus.",
+    image: "/italian.webp",
+    priceSm: 11.99,
+    priceMd: 12.99,
+    priceLg: 13.99,
+    toppings: [
+      {
+        image: "/cherry.png",
+        name: "cherry tomatoes",
+        price: 2,
+      },
+      {
+        image: "/corn.png",
+        name: "corn",
+        price: 2,
+      },
+      {
+        image: "/fresh-tomatoes.png",
+        name: "fresh tomatoes",
+        price: 2,
+      },
+      {
+        image: "/jalapeno.png",
+        name: "jalapeno",
+        price: 2,
+      },
+      {
+        image: "/parmesan.png",
+        name: "parmesan",
+        price: 2,
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: "margherita",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia recusandae dolorum enim eveniet. Mollitia laudantium, sunt blanditiis ratione quam delectus.",
+    image: "/margherita.webp",
+    priceSm: 9.99,
+    priceMd: 10.99,
+    priceLg: 11.99,
+    toppings: [
+      {
+        image: "/cherry.png",
+        name: "cherry tomatoes",
+        price: 2,
+      },
+      {
+        image: "/corn.png",
+        name: "corn",
+        price: 2,
+      },
+      {
+        image: "/fresh-tomatoes.png",
+        name: "fresh tomatoes",
+        price: 2,
+      },
+      {
+        image: "/jalapeno.png",
+        name: "jalapeno",
+        price: 2,
+      },
+      {
+        image: "/parmesan.png",
+        name: "parmesan",
+        price: 2,
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: "pepperoni",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia recusandae dolorum enim eveniet. Mollitia laudantium, sunt blanditiis ratione quam delectus.",
+    image: "/pepperoni.webp",
+    priceSm: 10.99,
+    priceMd: 11.99,
+    priceLg: 12.99,
+    toppings: [
+      {
+        image: "/cherry.png",
+        name: "cherry tomatoes",
+        price: 2,
+      },
+      {
+        image: "/corn.png",
+        name: "corn",
+        price: 2,
+      },
+      {
+        image: "/fresh-tomatoes.png",
+        name: "fresh tomatoes",
+        price: 2,
+      },
+      {
+        image: "/jalapeno.png",
+        name: "jalapeno",
+        price: 2,
+      },
+      {
+        image: "/parmesan.png",
+        name: "parmesan",
+        price: 2,
+      },
+    ],
+  },
+  {
+    id: 7,
+    name: "quattro formaggi",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia recusandae dolorum enim eveniet. Mollitia laudantium, sunt blanditiis ratione quam delectus.",
+    image: "/quattro-formaggi.webp",
+    priceSm: 12.99,
+    priceMd: 13.99,
+    priceLg: 14.99,
+    toppings: [
+      {
+        image: "/cherry.png",
+        name: "cherry tomatoes",
+        price: 2,
+      },
+      {
+        image: "/corn.png",
+        name: "corn",
+        price: 2,
+      },
+      {
+        image: "/fresh-tomatoes.png",
+        name: "fresh tomatoes",
+        price: 2,
+      },
+      {
+        image: "/jalapeno.png",
+        name: "jalapeno",
+        price: 2,
+      },
+      {
+        image: "/parmesan.png",
+        name: "parmesan",
+        price: 2,
+      },
+    ],
+  },
+  {
+    id: 8,
+    name: "quattro stagioni",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia recusandae dolorum enim eveniet. Mollitia laudantium, sunt blanditiis ratione quam delectus.",
+    image: "/quattro-stagioni.webp",
+    priceSm: 11.99,
+    priceMd: 12.99,
+    priceLg: 13.99,
+    toppings: [
+      {
+        image: "/cherry.png",
+        name: "cherry tomatoes",
+        price: 2,
+      },
+      {
+        image: "/corn.png",
+        name: "corn",
+        price: 2,
+      },
+      {
+        image: "/fresh-tomatoes.png",
+        name: "fresh tomatoes",
+        price: 2,
+      },
+      {
+        image: "/jalapeno.png",
+        name: "jalapeno",
+        price: 2,
+      },
+      {
+        image: "/parmesan.png",
+        name: "parmesan",
+        price: 2,
+      },
+    ],
+  },
+  {
+    id: 9,
+    name: "tonno",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia recusandae dolorum enim eveniet. Mollitia laudantium, sunt blanditiis ratione quam delectus.",
+    image: "/tonno.webp",
+    priceSm: 10.99,
+    priceMd: 11.99,
+    priceLg: 12.99,
+    toppings: [
+      {
+        image: "/cherry.png",
+        name: "cherry tomatoes",
+        price: 2,
+      },
+      {
+        image: "/corn.png",
+        name: "corn",
+        price: 2,
+      },
+      {
+        image: "/fresh-tomatoes.png",
+        name: "fresh tomatoes",
+        price: 2,
+      },
+      {
+        image: "/jalapeno.png",
+        name: "jalapeno",
+        price: 2,
+      },
+      {
+        image: "/parmesan.png",
+        name: "parmesan",
+        price: 2,
+      },
+    ],
+  },
+  {
+    id: 10,
+    name: "vegetarian",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia recusandae dolorum enim eveniet. Mollitia laudantium, sunt blanditiis ratione quam delectus.",
+    image: "/vegetarian.webp",
+    priceSm: 9.99,
+    priceMd: 10.99,
+    priceLg: 11.99,
+    toppings: [
+      {
+        image: "/cherry.png",
+        name: "cherry tomatoes",
+        price: 2,
+      },
+      {
+        image: "/corn.png",
+        name: "corn",
+        price: 2,
+      },
+      {
+        image: "/fresh-tomatoes.png",
+        name: "fresh tomatoes",
+        price: 2,
+      },
+      {
+        image: "/jalapeno.png",
+        name: "jalapeno",
+        price: 2,
+      },
+      {
+        image: "/parmesan.png",
+        name: "parmesan",
+        price: 2,
+      },
+    ],
+  },
+]
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <section>
+      <Banner />
+      <div className="container mx-auto">
+        <div className="grid grid-cols-2 gap-[15px] md:grid-cols-3 xl:grid-cols-4 xl:gap-[30px] py-12">
+          {pizzas.map(pizza => {
+            return <Pizza pizza={pizza} />
+          })}
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </section>
   )
 }
